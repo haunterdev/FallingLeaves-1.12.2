@@ -7,10 +7,10 @@ package com.xy.fallingleaves.proxy;
 public class CommonProxy {
 
     public void preInit() {
-        // server side — no-op
+        // server side, no-op
     }
 
     public void init() {
-        // server side — no-op
+        // server side, no-op
     }
 }

@@ -8,7 +8,7 @@ import net.minecraftforge.fml.common.Loader;
 import java.lang.reflect.Method;
 
 /**
- * Optional Serene Seasons integration (soft dependency, reflection only — the mod
+ * Optional Serene Seasons integration (soft dependency, reflection only, the mod
  * runs fine without Serene Seasons). Reads the world's current season and turns it
  * into a leaf spawn-rate multiplier via {@link FallingLeavesConfig#seasonFallRate}.
  *
@@ -38,7 +38,7 @@ public final class SeasonCompat {
             getSeason = stateClass.getMethod("getSeason");
             available = true;
         } catch (Throwable t) {
-            available = false; // API shape changed or class missing — degrade gracefully
+            available = false; // API shape changed or class missing, degrade gracefully
         }
     }
 
@@ -63,7 +63,7 @@ public final class SeasonCompat {
                 return ((Enum<?>) season).ordinal();
             }
         } catch (Throwable t) {
-            // ignore — fall through to no-modifier
+            // ignore, fall through to no-modifier
         }
         return -1;
     }

@@ -105,7 +105,7 @@ public class LeafUtil {
         // Live biome/season tint. Serene Seasons (and similar) inject seasonal colour
         // straight into this BlockColors pipeline, so the particle follows the season for
         // free. Guarded so a misbehaving third-party leaf colour handler can never break
-        // particle spawning — fall back to the plain texture colour.
+        // particle spawning, fall back to the plain texture colour.
         int blockColor = -1;
         if (shouldColor) {
             try {

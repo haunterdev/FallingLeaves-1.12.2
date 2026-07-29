@@ -22,7 +22,7 @@ minecraft {
     )
 }
 
-// Pure client-side event mod — no mixins, no coremod, no extra deps.
+// Pure client-side event mod, no mixins, no coremod, no extra deps.
 
 processResources {
     inputs.property 'version', project.version

@@ -21,7 +21,7 @@ import java.util.Map;
  * Quark-style one-time startup notice. Some mods ship their own falling-leaf or
  * wind-blown foliage particle system; running them alongside Falling Leaves can
  * visually double up the leaves. When such a mod is detected, this tells the
- * player once (ever) and how to turn one off. Dynamic Trees is NOT listed — it
+ * player once (ever) and how to turn one off. Dynamic Trees is NOT listed, it
  * only adds leaf blocks (no particle system), and Falling Leaves spawns from its
  * leaves on purpose.
  */

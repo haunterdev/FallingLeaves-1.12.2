@@ -95,7 +95,7 @@ public class FallingLeafParticle extends Particle {
             } else {
                 this.rotateTime = 0;
             }
-            // Asymptotic wind sway (Fabric model — approaches wind velocity, never reaches it).
+            // Asymptotic wind sway (Fabric model, approaches wind velocity, never reaches it).
             this.motionX += ((double) Wind.windX - this.motionX) * (double) this.windCoefficient / 60.0;
             this.motionZ += ((double) Wind.windZ - this.motionZ) * (double) this.windCoefficient / 60.0;
         }
