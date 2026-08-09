@@ -22,5 +22,9 @@ reference-1201-src/
 fallingleaves-1.20.1-2.1.2/
 fallingleaves-1.20.1-2.1.2.jar
 
-
+# Internal working docs, not shipped
 _docs/
+
+# OS
+.DS_Store
+Thumbs.db
