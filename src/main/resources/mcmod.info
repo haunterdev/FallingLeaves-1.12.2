@@ -7,7 +7,7 @@
     "mcversion": "${mcversion}",
     "url": "https://github.com/Cheaterpaul/fallingleaves",
     "updateUrl": "",
-    "authorList": ["Cheaterpaul", "Fourmisain", "BrekiTomasson", "RandomMcSomethin (Fabric original)", "XY (1.12.2 port)"],
+    "authorList": ["Cheaterpaul", "Fourmisain", "BrekiTomasson", "RandomMcSomethin (Fabric original)", "xy (1.12.2 port)"],
     "credits": "Original Fabric mod by Fourmisain et al.; Forge port by Cheaterpaul.",
     "logoFile": "logo.png",
     "screenshots": [],
