@@ -117,8 +117,22 @@ public class LeafUtil {
         return calculateLeafColor(sprite, blockColor);
     }
 
+    /**
+     * Average opaque colour of the sprite's first frame, or null when the frame data is not
+     * available yet. LoliASM and Cleanroom load animated sprite frames lazily, so
+     * getFrameTextureData(0) can throw IndexOutOfBounds on an empty list while a world is
+     * still loading (GitHub issue #2). A null result is not cached, so the next call retries.
+     */
     public static double[] averageColor(TextureAtlasSprite sprite) {
-        int[] pixels = sprite.getFrameTextureData(0)[0];
+        int[][] frame;
+        try {
+            if (sprite.getFrameCount() <= 0) return null;
+            frame = sprite.getFrameTextureData(0);
+        } catch (RuntimeException e) {
+            return null;
+        }
+        if (frame == null || frame.length == 0 || frame[0] == null) return null;
+        int[] pixels = frame[0];
         double r = 0, g = 0, b = 0;
         int n = 0;
         for (int c : pixels) {
@@ -135,9 +149,15 @@ public class LeafUtil {
 
     public static double[] calculateLeafColor(TextureAtlasSprite sprite, int blockColor) {
         ResourceLocation key = new ResourceLocation(sprite.getIconName());
-        double[] textureColor = TextureCache.INST
-                .computeIfAbsent(key, k -> new TextureCache.Data(averageColor(sprite)))
-                .getColor();
+        TextureCache.Data cached = TextureCache.INST.get(key);
+        if (cached == null) {
+            double[] avg = averageColor(sprite);
+            if (avg != null) {
+                cached = new TextureCache.Data(avg);
+                TextureCache.INST.put(key, cached);
+            }
+        }
+        double[] textureColor = cached != null ? cached.getColor() : new double[]{1.0, 1.0, 1.0};
         if (blockColor != -1) {
             textureColor[0] = textureColor[0] * (((blockColor >> 16) & 0xFF) / 255.0);
             textureColor[1] = textureColor[1] * (((blockColor >> 8) & 0xFF) / 255.0);
